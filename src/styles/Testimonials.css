@@ -1,0 +1,124 @@
+.testimonials-section {
+  padding: 80px 24px;
+  background-color: #ffffff;
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  /* Aligns the top of the left column and right photo grid on the exact same line */
+  align-items: start;
+}
+
+/* Testimonial Side Styling */
+.testimonial-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  /* Centers the heading and card block together as a unified column */
+  align-items: center;
+}
+
+.testimonials-heading {
+  color: #252b42;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 50px;
+  line-height: 32px;
+  text-align: center;
+  width: 100%;
+}
+
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.avatar-container {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rating-stars {
+  font-size: 20px;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.star {
+  color: #b3b3b3;
+}
+
+.star.filled {
+  color: #f3cd03;
+}
+
+.testimonial-text {
+  color: #737373;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.reviewer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.reviewer-name {
+  color: #23a6f0;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.reviewer-role {
+  color: #252b42;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Photo Grid Side Styling (3x3 grid) */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  width: 100%;
+}
+
+.grid-item {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive breakpoint */
+@media (max-width: 768px) {
+  .testimonials-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

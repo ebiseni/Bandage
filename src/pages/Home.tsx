@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import ProductCard from "../components/ProductCard";
 import ServicesSection from "../components/ServicesSection";
 import FeaturedPosts from "../components/FeaturedPosts";
+import Testimonials from "../components/Testimonials";
 import { useGetBestsellerProductsQuery } from "../features/api/productsApi";
 import "../styles/Home.css";
 
@@ -109,6 +110,9 @@ const Home: React.FC = () => {
 
         {/* Featured Posts Section */}
         <FeaturedPosts />
+
+        {/* Testimonials Section */}
+        <Testimonials />
       </main>
     </div>
   );
