@@ -5,6 +5,7 @@ import ServicesSection from "../components/ServicesSection";
 import FeaturedPosts from "../components/FeaturedPosts";
 import Testimonials from "../components/Testimonials";
 import CallToAction from "../components/CallToAction";
+import Footer from "../components/Footer";
 import { useGetBestsellerProductsQuery } from "../features/api/productsApi";
 import "../styles/Home.css";
 
@@ -117,6 +118,9 @@ const Home: React.FC = () => {
 
         {/* Call to Action Section */}
         <CallToAction />
+
+        {/* Footer Section */}
+        <Footer />
       </main>
     </div>
   );
