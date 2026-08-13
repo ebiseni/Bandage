@@ -1,0 +1,146 @@
+.cart-main {
+  padding: 40px 0;
+}
+
+.cart-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.cart-heading {
+  font-size: 24px;
+  font-weight: 700;
+  color: #252b42;
+  margin-bottom: 30px;
+}
+
+.cart-empty-text {
+  font-size: 16px;
+  color: #737373;
+}
+
+.cart-content {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.cart-item-list {
+  flex: 1 1 550px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-item-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cart-item-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #252b42;
+}
+
+.cart-item-price {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2dc071;
+}
+
+.cart-quantity-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.cart-qty-btn {
+  background-color: #f9f9f9;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cart-remove-btn {
+  background-color: transparent;
+  color: #e74c3c;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.cart-summary-card {
+  flex: 1 1 300px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #ffffff;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cart-summary-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #252b42;
+}
+
+.cart-summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #737373;
+}
+
+.cart-divider {
+  border: 0;
+  border-top: 1px solid #e6e6e6;
+}
+
+.cart-summary-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 700;
+  color: #252b42;
+}
+
+.cart-checkout-btn {
+  background-color: #23a6f0;
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+}

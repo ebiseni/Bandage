@@ -1,0 +1,40 @@
+/* Global CSS Reset & Variables */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #23a6f0;
+  --success-color: #2dc071;
+  --text-dark: #252b42;
+  --text-muted: #737373;
+  --bg-light: #f9f9f9;
+  --white: #ffffff;
+  --border-color: #e6e6e6;
+}
+
+body {
+  font-family: "Montserrat", sans-serif, system-ui;
+  color: var(--text-dark);
+  background-color: var(--white);
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Utility Containers */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
