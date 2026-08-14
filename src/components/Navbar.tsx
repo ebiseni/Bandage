@@ -79,7 +79,30 @@ const Navbar: React.FC = () => {
             Bandage
           </Link>
 
-          <ul className={`navbar-links ${isMenuOpen ? "active" : ""}`}>
+          {/* DESKTOP NAV LINKS */}
+          <ul className="desktop-nav-links desktop-only">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/product">Shop</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/blog">Blog</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+            <li>
+              <Link to="/pages">Pages</Link>
+            </li>
+          </ul>
+
+          {/* MOBILE NAV LINKS */}
+          <ul className={`mobile-nav-links  ${isMenuOpen ? "active" : ""}`}>
             <li>
               <Link to="/" onClick={() => setIsMenuOpen(false)}>
                 Home
@@ -103,7 +126,7 @@ const Navbar: React.FC = () => {
           </ul>
 
           <div className="navbar-actions">
-            <Link to="/login" className="navbar-login">
+            <Link to="/login" className="navbar-login desktop-only">
               <img
                 src={userIcon}
                 alt="User"
@@ -123,7 +146,13 @@ const Navbar: React.FC = () => {
               <span>{totalCartCount}</span>
             </Link>
 
-            {/* Mobile-Specific Search Icon from Figma */}
+            {/* Desktop Wishlist Icon */}
+            <Link to="/wishlist" className="navbar-action-item desktop-only">
+              <img src={heartIcon} alt="Wishlist" className="nav-icon-img" />
+              <span>{totalWishlistCount}</span>
+            </Link>
+
+            {/* Mobile-Specific Search Icon */}
             <button className="navbar-icon-btn mobile-only" title="Search">
               <img
                 src={mobileSearchIcon}
@@ -132,17 +161,17 @@ const Navbar: React.FC = () => {
               />
             </button>
 
-            {/* Mobile-Specific Cart Icon from Figma */}
+            {/* Mobile-Specific Cart Icon */}
             <Link to="/cart" className="navbar-action-item mobile-only">
               <img src={mobileCartIcon} alt="Cart" className="nav-icon-img" />
             </Link>
 
             {/* Hidden variable references to prevent TypeScript unused warnings */}
             <span style={{ display: "none" }}>
-              {totalWishlistCount} {heartIcon} {dropdownIcon}
+              {totalWishlistCount} {dropdownIcon}
             </span>
 
-            {/* Mobile Hamburger Button from Figma */}
+            {/* Mobile Hamburger Button */}
             <button
               className="hamburger-btn mobile-only"
               onClick={() => setIsMenuOpen(!isMenuOpen)}

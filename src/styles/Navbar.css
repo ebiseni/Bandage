@@ -64,6 +64,7 @@
   justify-content: space-between;
   align-items: center;
   height: 70px;
+  position: relative;
 }
 
 .navbar-brand {
@@ -73,7 +74,8 @@
   text-decoration: none;
 }
 
-.navbar-links {
+/* Desktop Navigation Links */
+.desktop-nav-links {
   display: flex;
   list-style: none;
   gap: 20px;
@@ -81,15 +83,23 @@
   padding: 0;
 }
 
-.navbar-links a {
+.desktop-nav-links a {
   text-decoration: none;
   color: #737373;
   font-weight: 600;
   font-size: 14px;
 }
 
-.navbar-links a:hover {
+.desktop-nav-links a:hover {
   color: #252b42;
+}
+
+/* Mobile Navigation Links - Hidden by default on desktop */
+.mobile-nav-links {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar-actions {
@@ -155,13 +165,12 @@
   .navbar-container {
     padding: 15px 20px;
     height: 70px;
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  /* Hide desktop login link text and desktop-only icons */
+  /* Hide desktop login link text and desktop-only items */
   .navbar-login {
     display: none;
   }
@@ -189,8 +198,8 @@
     padding: 0;
   }
 
-  /* Full-width centered menu matching Figma */
-  .navbar-links {
+  /* Full-width centered mobile dropdown menu matching Figma */
+  .mobile-nav-links {
     display: none;
     flex-direction: column;
     position: absolute;
@@ -203,19 +212,22 @@
     text-align: center;
     gap: 30px;
     z-index: 1000;
+    list-style: none;
+    margin: 0;
   }
 
-  .navbar-links.active {
+  .mobile-nav-links.active {
     display: flex;
   }
 
-  .navbar-links a {
+  .mobile-nav-links a {
     font-size: 24px;
     font-weight: 400;
     color: #737373;
+    text-decoration: none;
   }
 
-  .navbar-links a:hover {
+  .mobile-nav-links a:hover {
     color: #252b42;
   }
 }
