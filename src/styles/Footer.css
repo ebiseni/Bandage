@@ -27,6 +27,7 @@
 .footer-socials {
   display: flex;
   gap: 20px;
+  align-items: center;
 }
 
 .footer-socials a {
@@ -135,11 +136,6 @@
   color: #737373;
   font-size: 14px;
   font-weight: 600;
-}
-.footer-socials {
-  display: flex;
-  gap: 20px;
-  align-items: center;
 }
 
 .footer-socials a img {

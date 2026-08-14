@@ -115,10 +115,24 @@
   object-fit: cover;
 }
 
-/* Responsive breakpoint */
+/* --- Responsive Media Queries Updated --- */
 @media (max-width: 768px) {
+  .testimonials-section {
+    padding: 40px 16px;
+  }
+
   .testimonials-container {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  .testimonials-heading {
+    font-size: 22px;
+    margin-bottom: 30px;
+    line-height: 28px;
+  }
+
+  .photo-grid {
+    gap: 10px;
   }
 }

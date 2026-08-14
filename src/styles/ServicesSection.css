@@ -65,3 +65,27 @@
   font-size: 14px;
   line-height: 1.5;
 }
+
+/* --- Responsive Media Queries Added --- */
+@media (max-width: 768px) {
+  .services-section {
+    padding: 40px 16px;
+  }
+
+  .services-title {
+    font-size: 22px;
+  }
+
+  .services-desc {
+    margin-bottom: 40px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 20px 10px;
+  }
+}

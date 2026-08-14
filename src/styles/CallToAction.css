@@ -61,3 +61,24 @@
 .cta-button:hover {
   background-color: #1a8ad0;
 }
+
+/* --- Responsive Media Queries Added --- */
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 60px 16px;
+  }
+
+  .cta-title {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .cta-price {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .cta-button {
+    padding: 12px 30px;
+  }
+}

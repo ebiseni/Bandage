@@ -156,3 +156,18 @@
   height: 12px;
   object-fit: contain;
 }
+
+/* --- Responsive Media Queries Added --- */
+@media (max-width: 768px) {
+  .featured-posts-section {
+    padding: 40px 16px;
+  }
+
+  .featured-posts-title {
+    font-size: 28px;
+  }
+
+  .featured-posts-grid {
+    grid-template-columns: 1fr;
+  }
+}
