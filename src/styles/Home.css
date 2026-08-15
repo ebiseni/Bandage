@@ -37,24 +37,27 @@
 .home-product-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 30px;
+  gap: 20px;
   margin-top: 40px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Responsive fallback for smaller screens */
-@media (max-width: 1400px) {
+/* Responsive breakpoints for the product grid */
+@media (max-width: 1200px) {
   .home-product-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .home-product-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .home-product-grid {
     grid-template-columns: 1fr;
   }
@@ -77,13 +80,12 @@
 /* Hero Grid Styles (4 Images) */
 .hero-grid-container {
   max-width: 1400px;
-  margin: 0 auto 40px auto;
+  margin: 0 auto 100px auto;
   padding: 0 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 200px);
   gap: 15px;
-  margin-bottom: 100px;
 }
 
 .hero-item {
@@ -177,32 +179,6 @@
   font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 1px;
-}
-
-.home-product-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  margin-top: 40px;
-}
-
-/* Adjust breakpoints so it only scales down on smaller screens */
-@media (max-width: 1200px) {
-  .home-product-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .home-product-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .home-product-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* Mobile Responsive Adjustments for Hero Grid & Navbar */

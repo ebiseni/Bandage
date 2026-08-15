@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../store/hooks";
+import { useAppSelector, useAppDispatch } from "../store/hooks";
+import {
+  removeFromCart,
+  incrementQuantity,
+  decrementQuantity,
+} from "../features/cart/cartSlice";
+import { removeFromWishlist } from "../features/wishlist/wishlistSlice"; // Assuming you have a wishlist slice
 import "../styles/Navbar.css";
 
 // Import desktop navbar SVGs from assets
@@ -22,20 +28,95 @@ import youtubeIcon from "../assets/icon-youtube.svg";
 import facebookIcon from "../assets/icon-facebook.svg";
 import twitterIcon from "../assets/icon-twitter.svg";
 
+interface ToastItem {
+  id: number | string;
+  title: string;
+  price: number;
+  thumbnail?: string;
+}
+
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isWishlistOpen, setIsWishlistOpen] = useState(false); // Desktop-only wishlist dropdown state
+  const [toastItem, setToastItem] = useState<ToastItem | null>(null);
 
+  const dispatch = useAppDispatch();
   const cartItems = useAppSelector((state) => state.cart?.items || []);
   const wishlistItems = useAppSelector((state) => state.wishlist?.items || []);
+
+  // Listen for custom cart-add events
+  useEffect(() => {
+    const handleCartAdded = (event: Event) => {
+      const customEvent = event as CustomEvent;
+      if (customEvent.detail) {
+        setToastItem(customEvent.detail);
+      }
+    };
+
+    window.addEventListener(
+      "cart-item-added",
+      handleCartAdded as EventListener,
+    );
+    return () => {
+      window.removeEventListener(
+        "cart-item-added",
+        handleCartAdded as EventListener,
+      );
+    };
+  }, []);
+
+  // Automatically dismiss the toast after 3 seconds
+  useEffect(() => {
+    if (!toastItem) return;
+    const timer = setTimeout(() => {
+      setToastItem(null);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [toastItem]);
 
   const totalCartCount = cartItems.reduce(
     (sum, item) => sum + item.quantity,
     0,
   );
+
+  const totalPrice = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
+
   const totalWishlistCount = wishlistItems.length;
 
   return (
     <header className="header-container">
+      {/* Rich Toast Notification Popup (Bottom Right) */}
+      {toastItem && (
+        <div className="toast-notification-card">
+          <div className="toast-header">
+            <span>Successfully added to basket</span>
+            <button
+              className="toast-close-btn"
+              onClick={() => setToastItem(null)}
+            >
+              &times;
+            </button>
+          </div>
+          <div className="toast-body">
+            {toastItem.thumbnail && (
+              <img
+                src={toastItem.thumbnail}
+                alt={toastItem.title}
+                className="toast-thumb"
+              />
+            )}
+            <div className="toast-info">
+              <p className="toast-title">{toastItem.title}</p>
+              <p className="toast-price">${toastItem.price}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Top Green Bar */}
       <div className="top-bar">
         <div className="top-bar-content">
@@ -147,17 +228,155 @@ const Navbar: React.FC = () => {
               <img src={searchIcon} alt="Search" className="nav-icon-img" />
             </button>
 
-            {/* Desktop Cart Icon */}
-            <Link to="/cart" className="navbar-action-item desktop-only">
-              <img src={cartIcon} alt="Cart" className="nav-icon-img" />
-              <span>{totalCartCount}</span>
-            </Link>
+            {/* Desktop Cart Icon with Interactive Dropdown */}
+            <div className="cart-dropdown-wrapper">
+              <button
+                className="navbar-action-item desktop-only cart-toggle-btn"
+                onClick={() => {
+                  setIsCartOpen(!isCartOpen);
+                  setIsWishlistOpen(false); // Close wishlist dropdown if open
+                }}
+              >
+                <img src={cartIcon} alt="Cart" className="nav-icon-img" />
+                <span>{totalCartCount}</span>
+              </button>
 
-            {/* Desktop Wishlist Icon */}
-            <Link to="/wishlist" className="navbar-action-item desktop-only">
-              <img src={heartIcon} alt="Wishlist" className="nav-icon-img" />
-              <span>{totalWishlistCount}</span>
-            </Link>
+              {isCartOpen && (
+                <div className="cart-dropdown">
+                  <div className="cart-dropdown-header">
+                    <h4>Your Cart</h4>
+                    <button
+                      className="close-dropdown-btn"
+                      onClick={() => setIsCartOpen(false)}
+                    >
+                      &times;
+                    </button>
+                  </div>
+
+                  <div className="cart-dropdown-items-list">
+                    {cartItems.length === 0 ? (
+                      <p className="empty-cart-text">Your cart is empty</p>
+                    ) : (
+                      cartItems.map((item) => (
+                        <div key={item.id} className="cart-dropdown-item">
+                          {item.thumbnail && (
+                            <img
+                              src={item.thumbnail}
+                              alt={item.title}
+                              className="dropdown-item-thumb"
+                            />
+                          )}
+                          <div className="dropdown-item-info">
+                            <p className="dropdown-item-title">{item.title}</p>
+                            <p className="dropdown-item-pricing">
+                              ${item.price}
+                            </p>
+
+                            <div className="cart-quantity-controls">
+                              <button
+                                onClick={() =>
+                                  dispatch(decrementQuantity(item.id))
+                                }
+                                className="qty-btn"
+                              >
+                                -
+                              </button>
+                              <span>{item.quantity}</span>
+                              <button
+                                onClick={() =>
+                                  dispatch(incrementQuantity(item.id))
+                                }
+                                className="qty-btn"
+                              >
+                                +
+                              </button>
+                            </div>
+                          </div>
+
+                          <button
+                            className="dropdown-remove-btn"
+                            onClick={() => dispatch(removeFromCart(item.id))}
+                            title="Remove item"
+                          >
+                            🗑️
+                          </button>
+                        </div>
+                      ))
+                    )}
+                  </div>
+
+                  <div className="cart-dropdown-footer">
+                    <span className="cart-total-label">Total</span>
+                    <span className="cart-total-amount">
+                      ${totalPrice.toFixed(2)}
+                    </span>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Desktop Wishlist Icon with Dropdown (Strictly Desktop-Only) */}
+            <div className="cart-dropdown-wrapper desktop-only">
+              <button
+                className="navbar-action-item cart-toggle-btn"
+                onClick={() => {
+                  setIsWishlistOpen(!isWishlistOpen);
+                  setIsCartOpen(false); // Close cart dropdown if open
+                }}
+                title="Wishlist"
+              >
+                <img src={heartIcon} alt="Wishlist" className="nav-icon-img" />
+                <span>{totalWishlistCount}</span>
+              </button>
+
+              {isWishlistOpen && (
+                <div className="cart-dropdown">
+                  <div className="cart-dropdown-header">
+                    <h4>Your Wishlist</h4>
+                    <button
+                      className="close-dropdown-btn"
+                      onClick={() => setIsWishlistOpen(false)}
+                    >
+                      &times;
+                    </button>
+                  </div>
+
+                  <div className="cart-dropdown-items-list">
+                    {wishlistItems.length === 0 ? (
+                      <p className="empty-cart-text">Your wishlist is empty</p>
+                    ) : (
+                      wishlistItems.map((item: any) => (
+                        <div key={item.id} className="cart-dropdown-item">
+                          {item.thumbnail && (
+                            <img
+                              src={item.thumbnail}
+                              alt={item.title}
+                              className="dropdown-item-thumb"
+                            />
+                          )}
+                          <div className="dropdown-item-info">
+                            <p className="dropdown-item-title">{item.title}</p>
+                            <p className="dropdown-item-pricing">
+                              ${item.price}
+                            </p>
+                          </div>
+
+                          <button
+                            className="dropdown-remove-btn"
+                            onClick={() =>
+                              dispatch(removeFromWishlist(item.id))
+                            }
+                            title="Remove from wishlist"
+                          >
+                            🗑️
+                          </button>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Mobile-Specific Search Icon */}
             <button className="navbar-icon-btn mobile-only" title="Search">
@@ -168,15 +387,16 @@ const Navbar: React.FC = () => {
               />
             </button>
 
-            {/* Mobile-Specific Cart Icon */}
-            <Link to="/cart" className="navbar-action-item mobile-only">
-              <img src={mobileCartIcon} alt="Cart" className="nav-icon-img" />
-            </Link>
-
-            {/* Hidden variable references to prevent TypeScript unused warnings */}
-            <span style={{ display: "none" }}>
-              {totalWishlistCount} {dropdownIcon}
-            </span>
+            {/* Mobile-Specific Cart Icon with Dropdown */}
+            <div className="cart-dropdown-wrapper mobile-only">
+              <button
+                className="navbar-action-item cart-toggle-btn"
+                onClick={() => setIsCartOpen(!isCartOpen)}
+              >
+                <img src={mobileCartIcon} alt="Cart" className="nav-icon-img" />
+                <span>{totalCartCount}</span>
+              </button>
+            </div>
 
             {/* Mobile Hamburger Button */}
             <button
