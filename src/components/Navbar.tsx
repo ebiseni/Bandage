@@ -85,7 +85,14 @@ const Navbar: React.FC = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/product">Shop</Link>
+              <Link to="/shop" className="nav-shop-link">
+                Shop{" "}
+                <img
+                  src={dropdownIcon}
+                  alt="dropdown"
+                  className="dropdown-arrow"
+                />
+              </Link>
             </li>
             <li>
               <Link to="/about">About</Link>
