@@ -52,7 +52,7 @@ Users can:
 
 Wishlist state is persisted using `localStorage` with the `bandage_wishlist` storage key.
 
-### 🔄 Redux Toolkit State Management
+### Redux Toolkit State Management
 
 Redux Toolkit is used to manage application-wide state in a structured and scalable way.
 
@@ -74,7 +74,7 @@ productsApi.ts
 
 The cart and wishlist features use `createSlice` and typed `PayloadAction`s to define their state transitions and actions.
 
-### 🌐 RTK Query
+### RTK Query
 
 Product data is handled using **RTK Query**.
 
@@ -95,7 +95,7 @@ and provides a `getBestsellerProducts` query with support for `limit` and `skip`
 
 The generated query hook is consumed by React components to retrieve product data without having to manually manage loading, request, and response state.
 
-### 🏪 Redux Store Configuration
+### Redux Store Configuration
 
 The application's Redux store combines the major state domains:
 
@@ -112,7 +112,7 @@ The application then exposes this store to the React component tree through Reac
 
 ---
 
-## 🧠 State Management Architecture
+## State Management Architecture
 
 The application's state management can be represented as:
 
@@ -140,7 +140,7 @@ This separation keeps **server/API data** and **client-side application state** 
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
