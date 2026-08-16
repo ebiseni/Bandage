@@ -320,11 +320,18 @@
 /* Cart Footer Total Section */
 .cart-dropdown-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 12px;
   border-top: 1px solid #f0f0f0;
   margin-top: 14px;
   padding-top: 12px;
+}
+
+.cart-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .cart-total-label {
@@ -337,6 +344,24 @@
   font-size: 16px;
   font-weight: 700;
   color: #23a6f0;
+}
+
+/* Checkout Button Style */
+.checkout-btn {
+  width: 100%;
+  background-color: #23856d;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #1e705b;
 }
 
 .toast-notification-card {

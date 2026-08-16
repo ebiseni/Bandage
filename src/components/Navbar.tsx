@@ -306,10 +306,19 @@ const Navbar: React.FC = () => {
                   </div>
 
                   <div className="cart-dropdown-footer">
-                    <span className="cart-total-label">Total</span>
-                    <span className="cart-total-amount">
-                      ${totalPrice.toFixed(2)}
-                    </span>
+                    <div className="cart-total-row">
+                      <span className="cart-total-label">Total</span>
+                      <span className="cart-total-amount">
+                        ${totalPrice.toFixed(2)}
+                      </span>
+                    </div>
+                    {/* Added Checkout Button */}
+                    <button
+                      onClick={() => alert("Proceeding to checkout...")}
+                      className="checkout-btn"
+                    >
+                      Proceed to Checkout
+                    </button>
                   </div>
                 </div>
               )}
