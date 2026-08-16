@@ -3,19 +3,19 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-width: 0; /* Critical: prevents flex/grid items from breaking out of bounds */
+  min-width: 0;
   box-sizing: border-box;
 }
 
 .product-card-image-container {
   width: 100%;
-  height: 200px; /* Reduced height from 280px to match Figma proportions */
+  height: 200px;
   background-color: #f9f9f9;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; /* Required so the absolute wishlist button anchors to the image */
+  position: relative;
 }
 
 .product-card-image {
@@ -56,7 +56,6 @@
   transition: filter 0.2s ease;
 }
 
-/* Active/Liked state styling for the wishlist button */
 .product-card-wishlist-btn.active {
   background-color: #fff0f0;
 }
@@ -68,12 +67,12 @@
 }
 
 .product-card-content {
-  padding: 15px 12px; /* Reduced padding to remove bulkiness */
+  padding: 15px 12px;
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  min-width: 0; /* Ensures inner text elements respect container bounds */
+  min-width: 0;
 }
 
 .product-card-title-link {

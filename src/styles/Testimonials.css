@@ -9,7 +9,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
-  /* Aligns the top of the left column and right photo grid on the exact same line */
   align-items: start;
 }
 

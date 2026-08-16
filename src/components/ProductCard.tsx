@@ -76,7 +76,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <h3 className="product-card-title">{product.title}</h3>
         </Link>
 
-        {/* Dynamic Category/Department from API instead of hardcoded text */}
         <p className="product-card-category">{productCategory}</p>
 
         <div className="product-card-price-container">

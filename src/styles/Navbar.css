@@ -445,7 +445,6 @@
     align-items: center;
   }
 
-  /* Hide desktop login link text and desktop-only items */
   .navbar-login {
     display: none;
   }
@@ -454,7 +453,6 @@
     display: none !important;
   }
 
-  /* Show mobile-specific icons and hamburger on the right */
   .mobile-only {
     display: flex !important;
     align-items: center;
@@ -473,7 +471,6 @@
     padding: 0;
   }
 
-  /* Full-width centered mobile dropdown menu matching Figma */
   .mobile-nav-links {
     display: none;
     flex-direction: column;
