@@ -267,7 +267,7 @@ The toggle behaviour allows a product to be added or removed from the wishlist d
 
 ---
 
-## 🌐 RTK Query Implementation
+## RTK Query Implementation
 
 The product API is defined in:
 
@@ -317,7 +317,7 @@ RTK Query handles the API request lifecycle and stores the resulting API state w
 
 ---
 
-## 💾 Local Storage Persistence
+## Local Storage Persistence
 
 Bandage uses browser `localStorage` to persist shopping-related state.
 
@@ -337,7 +337,7 @@ This means that cart and wishlist contents can remain available after a browser 
 
 ---
 
-## ⚙️ Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -379,7 +379,7 @@ http://localhost:5173
 
 ---
 
-## 🏗️ Production Build
+## Production Build
 
 Create a production build with:
 
@@ -403,7 +403,7 @@ These commands are defined in the project's `package.json`.
 
 ---
 
-## 🚀 Deployment
+##  Deployment
 
 The application is deployed on **Vercel**.
 
@@ -417,7 +417,7 @@ The application is deployed on **Vercel**.
 
 ---
 
-## 📱 Responsive Experience
+## Responsive Experience
 
 The application is designed to provide a consistent shopping experience across different screen sizes, including:
 
@@ -427,7 +427,7 @@ The application is designed to provide a consistent shopping experience across d
 
 ---
 
-## 🎯 Technical Highlights
+## Technical Highlights
 
 This project demonstrates practical experience with:
 
@@ -447,7 +447,7 @@ This project demonstrates practical experience with:
 
 ---
 
-## 📚 What I Learned
+## What I Learned
 
 Through this project, I strengthened my understanding of:
 
@@ -465,7 +465,7 @@ Through this project, I strengthened my understanding of:
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
 Potential improvements include:
 
@@ -482,7 +482,7 @@ Potential improvements include:
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Ebiseni**
 
